@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :inventory
       t.string :category
       t.integer :store_id
+      t.string :image
 
       t.timestamps
     end
