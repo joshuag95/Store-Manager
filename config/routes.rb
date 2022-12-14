@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  resources :stores
-  resources :products
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :stores, only: [:create, :show, :index, :update]
+  resources :products, only: [:create, :show, :index, :update, :destroy]
+  
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+
 end

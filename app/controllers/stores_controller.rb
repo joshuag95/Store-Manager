@@ -1,23 +1,25 @@
 class StoresController < ApplicationController
-    set :default_content_type, 'application/json'
     
-    post "/stores" do
-      store = Store.create(
-        name: params[:name]
-      )
-      store.to_json
-    end
-
-
-    get "/stores" do
-      store = Store.all
-      store.to_json
-    end
     
+  def index
+    store = Store.all
+    render json: store
+  end
+  
+  def create 
+    store = Store.find_or_create_by(new_store_params)
+    render json: store
 
-    get "/stores/:id" do
-      store = Store.find(params[:id])
-      store.to_json
-    end
+  end
+    
+  def show
+    store = Store.find(params[:id])
+    render json: store
+  end
+  
+  private
 
+  def new_store_params
+    params.permit(:name)
+  end
 end
